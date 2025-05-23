@@ -1,0 +1,10 @@
+messages:
+  - role: system
+    content: >-
+      the frontend should use css and jquery and be responsive and also use a
+      light color pallet theme
+  - role: user
+    content: >-
+      the frontend should use css and jquery and be responsive and also use a
+      light color pallet theme
+model: openai/gpt-4o
