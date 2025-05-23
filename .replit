@@ -1,5 +1,6 @@
-modules = ["web", "nodejs-20"]
-run = "index.html"
+
+modules = ["web", "nodejs-20", "python-3.10"]
+run = "python -m http.server 5000"
 
 [nix]
 channel = "stable-24_05"
