@@ -10,39 +10,26 @@ $(document).ready(function() {
         
         // For demonstration, we'll use sample data
         // In a real application, this would fetch data from a server
-        const sampleItem = {
-            title: urlParams.get('title') || "Honda Vezel 2019",
-            description: "Honda Vezel Hybrid, 2019 model. Pearl white color, leather seats, reverse camera, push start. Excellent condition.",
-            price: "LKR 8,750,000",
-            specifications: {
-                "Condition": "Used",
-                "Year": "2019",
-                "Make": "Honda",
-                "Model": "Vezel",
-                "Color": "Pearl White"
-            },
+        const item = {
+            title: urlParams.get('title') || "No Title Available",
+            description: urlParams.get('description') || "No description available",
+            price: `LKR ${urlParams.get('price') || "0"}`,
             seller: {
-                name: "John Smith",
-                contact: "071-1234567",
-                location: "Colombo, Sri Lanka"
+                name: urlParams.get('seller_name') || "Not Available",
+                contact: urlParams.get('seller_contact') || "Not Available",
+                location: urlParams.get('seller_location') || "Not Available"
             }
         };
 
         // Update the page with item details
-        $('#itemTitle').text(sampleItem.title);
-        $('#itemDescription').text(sampleItem.description);
-        $('#itemPrice').text(sampleItem.price);
-        
-        // Update specifications
-        const specsList = $('#itemSpecs');
-        Object.entries(sampleItem.specifications).forEach(([key, value]) => {
-            specsList.append(`<li><strong>${key}:</strong> ${value}</li>`);
-        });
+        $('#itemTitle').text(item.title);
+        $('#itemDescription').text(item.description);
+        $('#itemPrice').text(item.price);
 
         // Update seller information
-        $('#sellerName').html(`<i class="fas fa-user me-2"></i>Seller Name: ${sampleItem.seller.name}`);
-        $('#sellerContact').html(`<i class="fas fa-phone me-2"></i>Contact: ${sampleItem.seller.contact}`);
-        $('#sellerLocation').html(`<i class="fas fa-map-marker-alt me-2"></i>Location: ${sampleItem.seller.location}`);
+        $('#sellerName').html(`<i class="fas fa-user me-2"></i>Seller Name: ${item.seller.name}`);
+        $('#sellerContact').html(`<i class="fas fa-phone me-2"></i>Contact: ${item.seller.contact}`);
+        $('#sellerLocation').html(`<i class="fas fa-map-marker-alt me-2"></i>Location: ${item.seller.location}`);
     }
 
     // Handle image preview
