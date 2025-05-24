@@ -2,6 +2,49 @@ $(document).ready(function() {
     // Initialize tooltips
     $('[data-bs-toggle="tooltip"]').tooltip();
 
+    // Load item details if we're on the item details page
+    if (window.location.pathname.includes('item-details.html')) {
+        // Get item data from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const itemId = urlParams.get('id');
+        
+        // For demonstration, we'll use sample data
+        // In a real application, this would fetch data from a server
+        const sampleItem = {
+            title: urlParams.get('title') || "Honda Vezel 2019",
+            description: "Honda Vezel Hybrid, 2019 model. Pearl white color, leather seats, reverse camera, push start. Excellent condition.",
+            price: "LKR 8,750,000",
+            specifications: {
+                "Condition": "Used",
+                "Year": "2019",
+                "Make": "Honda",
+                "Model": "Vezel",
+                "Color": "Pearl White"
+            },
+            seller: {
+                name: "John Smith",
+                contact: "071-1234567",
+                location: "Colombo, Sri Lanka"
+            }
+        };
+
+        // Update the page with item details
+        $('#itemTitle').text(sampleItem.title);
+        $('#itemDescription').text(sampleItem.description);
+        $('#itemPrice').text(sampleItem.price);
+        
+        // Update specifications
+        const specsList = $('#itemSpecs');
+        Object.entries(sampleItem.specifications).forEach(([key, value]) => {
+            specsList.append(`<li><strong>${key}:</strong> ${value}</li>`);
+        });
+
+        // Update seller information
+        $('#sellerName').html(`<i class="fas fa-user me-2"></i>Seller Name: ${sampleItem.seller.name}`);
+        $('#sellerContact').html(`<i class="fas fa-phone me-2"></i>Contact: ${sampleItem.seller.contact}`);
+        $('#sellerLocation').html(`<i class="fas fa-map-marker-alt me-2"></i>Location: ${sampleItem.seller.location}`);
+    }
+
     // Handle image preview
     $('#images').on('change', function(e) {
         const files = e.target.files;
