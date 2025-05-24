@@ -1,0 +1,627 @@
+/* Global Styles */
+:root {
+    --primary-color: #007bff; /* Refined Blue */
+    --primary-color-rgb: 0,123,255;
+    --secondary-color: #6c757d; /* Grey */
+    --secondary-color-rgb: 108,117,125;
+    --success-color: #28a745; /* Green for success, CTAs */
+    --success-color-rgb: 40,167,69;
+    --accent-color: #ffc107; /* Yellow for highlights */
+    --accent-color-rgb: 255,193,7;
+    --background-light: #f8f9fa; /* Light grey for backgrounds */
+    --background-white: #ffffff; /* White background */
+    --text-color: #343a40; /* Dark Grey for text */
+    --text-light: #6c757d; /* Lighter grey for secondary text */
+
+    /* Animation timings */
+    --animation-duration-short: 0.3s;
+    --animation-duration-medium: 0.5s;
+    --animation-duration-long: 0.7s;
+}
+
+/* Keyframes for Animations */
+@keyframes kf-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes kf-fade-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes kf-fade-scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem; /* Base font size */
+    line-height: 1.7; /* Increased line height */
+    color: var(--text-color); /* Updated body text color */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700; /* Bolder headings */
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--text-color); /* Default h1 color */
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 123, 255, 0.1), rgba(0, 123, 255, 0.05));
+    padding: 5rem 0;
+    margin-bottom: 3rem;
+    animation: kf-fade-slide-up var(--animation-duration-medium) ease-out backwards;
+}
+
+.hero-section h1 {
+    color: var(--primary-color);
+}
+
+/* Category Cards */
+/* Adding a wrapper class for spacing, assuming it will be in HTML */
+.category-section {
+    padding-bottom: 3rem;
+    animation: kf-fade-in var(--animation-duration-medium) ease-out backwards;
+    animation-delay: 0.2s; /* Stagger entrance after hero */
+}
+
+.category-card {
+    transition: transform var(--animation-duration-short) ease, box-shadow var(--animation-duration-short) ease;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    animation: kf-fade-scale-in var(--animation-duration-medium) ease-out backwards;
+    /* Stagger card animations if they are in a list - requires JS or manual :nth-child for pure CSS */
+    /* For now, a common delay or no delay if they appear at different times due to scrolling */
+    border-radius: 0.25rem; /* Ensure cards have a base radius for consistency */
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.category-card:focus-within {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2), 0 0 0 0.2rem rgba(var(--primary-color-rgb), 0.25);
+}
+
+.category-card i {
+    color: var(--primary-color); /* Change category icons to primary color for better CTA */
+    font-size: 2rem; /* Slightly larger icons */
+}
+
+.category-card .card-body {
+    padding: 1.5rem; /* Consistent padding in cards */
+}
+
+/* Form Styles */
+#adForm {
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border: none;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-radius: 0.5rem;
+    animation: kf-fade-in var(--animation-duration-medium) ease-out backwards;
+    animation-delay: 0.6s; /* Stagger after other sections */
+}
+
+.form-control {
+    padding: 0.75rem 1rem; /* Increased padding for form inputs */
+    margin-bottom: 1rem; /* Spacing below form inputs */
+    font-size: 1rem; /* Consistent font size with body */
+    background-clip: padding-box;
+    border: 1px solid #ced4da; /* Default Bootstrap border color */
+    transition: border-color var(--animation-duration-short) ease-in-out, box-shadow var(--animation-duration-short) ease-in-out;
+}
+
+.form-control:hover {
+    border-color: #adb5bd; /* Slightly darker border on hover - Bootstrap's $gray-500 */
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.25); /* Using RGB variable */
+}
+
+/* Styling for select elements */
+select.form-control {
+    appearance: none; /* Remove default system appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    padding-right: 2.25rem; /* Make space for the arrow */
+}
+
+/* Remove arrow for multiple select */
+select.form-control[multiple], select.form-control[size]:not([size="1"]) {
+    background-image: none;
+    padding-right: 0.75rem;
+}
+
+
+/* Ensure textarea also gets hover/focus */
+textarea.form-control:hover {
+    border-color: #adb5bd;
+}
+
+textarea.form-control:focus {
+    border-color: var(--primary-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.25);
+}
+
+
+.form-label {
+    font-weight: 600; /* Bolder labels */
+    margin-bottom: 0.5rem;
+}
+
+/* Featured Listings */
+/* Adding a wrapper class for spacing, assuming it will be in HTML */
+.featured-listings-section {
+    padding-bottom: 3rem;
+    animation: kf-fade-in var(--animation-duration-medium) ease-out backwards;
+    animation-delay: 0.4s; /* Stagger entrance */
+}
+
+.listing-card {
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform var(--animation-duration-short) ease, box-shadow var(--animation-duration-short) ease;
+    margin-bottom: 1.5rem;
+    border-radius: 0.25rem;
+    animation: kf-fade-scale-in var(--animation-duration-medium) ease-out backwards;
+    /* Similar to category cards, true on-scroll needs JS. This will animate once. */
+}
+
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
+}
+
+.listing-card:focus-within {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2), 0 0 0 0.2rem rgba(var(--primary-color-rgb), 0.25);
+}
+
+.listing-card img {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 0.25rem; /* Match card rounding */
+    border-top-right-radius: 0.25rem;
+}
+
+.listing-card .card-body {
+    padding: 1.5rem; /* Consistent padding in cards */
+}
+
+.listing-price {
+    color: var(--success-color);
+    font-weight: bold;
+    font-size: 1.25rem; /* Larger price */
+}
+
+/* Footer */
+footer {
+    margin-top: 3rem;
+    padding: 2rem 0; /* Added padding to footer */
+    background-color: var(--background-light); /* Light background for footer */
+    border-top: 1px solid #e9ecef; /* Subtle top border for footer */
+}
+
+footer p {
+    color: var(--text-light);
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--animation-duration-short) ease, text-decoration-color var(--animation-duration-short) ease-in-out;
+}
+
+footer a:hover, footer a:focus {
+    color: var(--accent-color); /* Hover to accent color */
+    text-decoration: underline; /* Ensure underline on hover/focus */
+    outline: none; /* Consistent with other focused links */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+        padding: 2rem 0;
+    }
+    
+    .hero-section img {
+        margin-top: 2rem;
+    }
+    
+    .category-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Custom Button Styles */
+/* General button base style */
+.btn {
+    display: inline-block; /* Ensures proper alignment and spacing */
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    transition: all var(--animation-duration-short) ease-in-out;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline from button-styled links */
+}
+
+.btn:focus, .btn.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.5); /* Default focus shadow */
+}
+
+/* Solid Buttons */
+/* Removing the redundant .btn-primary placeholder */
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--background-white);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    background-color: #0056b3; /* Darker primary */
+    border-color: #0052a9;
+    color: var(--background-white);
+}
+
+.btn-primary:focus, .btn-primary.focus {
+    background-color: #0056b3;
+    border-color: #0052a9;
+    color: var(--background-white);
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.5), 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--background-white);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    background-color: #545b62; /* Darker secondary */
+    border-color: #4e555b;
+    color: var(--background-white);
+}
+
+.btn-secondary:focus, .btn-secondary.focus {
+    background-color: #545b62;
+    border-color: #4e555b;
+    color: var(--background-white);
+    box-shadow: 0 0 0 0.25rem rgba(var(--secondary-color-rgb), 0.5), 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+    color: var(--background-white);
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    background-color: #1e7e34; /* Darker success */
+    border-color: #1c7430;
+    color: var(--background-white);
+}
+
+.btn-success:focus, .btn-success.focus {
+    background-color: #1e7e34;
+    border-color: #1c7430;
+    color: var(--background-white);
+    box-shadow: 0 0 0 0.25rem rgba(var(--success-color-rgb), 0.5), 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-accent {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    background-color: #e0a800; /* Darker accent */
+    border-color: #d39e00;
+    color: var(--text-color);
+}
+
+.btn-accent:focus, .btn-accent.focus {
+    background-color: #e0a800;
+    border-color: #d39e00;
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.25rem rgba(var(--accent-color-rgb), 0.5), 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Button Outline Styles */
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--primary-color);
+    color: var(--background-white);
+}
+
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+    background-color: var(--primary-color);
+    color: var(--background-white);
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.5);
+}
+
+.btn-outline-secondary {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-outline-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--secondary-color);
+    color: var(--background-white);
+}
+
+.btn-outline-secondary:focus, .btn-outline-secondary.focus {
+    background-color: var(--secondary-color);
+    color: var(--background-white);
+    box-shadow: 0 0 0 0.25rem rgba(var(--secondary-color-rgb), 0.5);
+}
+
+.btn-outline-success {
+    color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-outline-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--success-color);
+    color: var(--background-white);
+}
+
+.btn-outline-success:focus, .btn-outline-success.focus {
+    background-color: var(--success-color);
+    color: var(--background-white);
+    box-shadow: 0 0 0 0.25rem rgba(var(--success-color-rgb), 0.5);
+}
+
+.btn-outline-accent {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-outline-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.btn-outline-accent:focus, .btn-outline-accent.focus {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.25rem rgba(var(--accent-color-rgb), 0.5);
+}
+
+
+/* General link styles */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--animation-duration-short) ease-in-out, text-decoration-color var(--animation-duration-short) ease-in-out;
+}
+
+a:hover, a:focus {
+    color: var(--accent-color);
+    text-decoration: underline;
+    outline: none; /* Remove default outline if underline is sufficient */
+}
+
+/* Search Bar */
+/* Assuming .navbar is styled by Bootstrap or another framework.
+   If custom styling is needed: */
+.navbar {
+    background-color: var(--background-white); /* White navbar background */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+.navbar .nav-link {
+    color: var(--text-light);
+    text-decoration: none; /* Ensure navbar links don't get underlined by general 'a' styles */
+    transition: color var(--animation-duration-short) ease-in-out;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .nav-link.active {
+    color: var(--primary-color);
+    text-decoration: none; /* Explicitly keep no underline */
+    outline: none; /* Remove default outline */
+}
+
+.navbar .form-control {
+    border-radius: 20px;
+    padding-left: 1rem;
+}
+
+.navbar .btn-light {
+    border-radius: 20px;
+    padding: 0.375rem 1.5rem;
+}
+
+/* Image Upload Preview */
+.image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.image-preview img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.wikunamu-image {
+    max-width: 50%; /* Adjust this value as needed */
+} 
+
+/* Item Details Page Specifics */
+#itemImage {
+    max-height: 400px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    border: 1px solid #ddd;
+    padding: 5px;
+    background-color: var(--background-white);
+    margin-bottom: 1.5rem; /* Added margin for spacing */
+}
+
+/* Price on item details page already uses .listing-price and fs-2 for prominence */
+/* .item-details-container .listing-price { (Example if more specificity needed)
+    font-size: 2rem; 
+    margin-bottom: 1rem;
+} */
+
+.seller-info-card {
+    padding: 1.5rem;
+    border-radius: 0.5rem; /* Match other card styles like #adForm */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Match other card styles */
+    background-color: var(--background-white); /* Ensure card background */
+}
+
+.seller-info-card h3.card-title { /* Targeting the "Item Price" h3 */
+    font-size: 1.25rem; /* Smaller than default h3 if needed */
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.seller-info-card h4 { /* Seller Information heading */
+    margin-top: 1rem; /* Space above seller info heading */
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1.5rem; /* Consistent with other h4 */
+}
+
+.seller-info-card p {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.seller-info-card p i {
+    margin-right: 0.75rem;
+    color: var(--secondary-color);
+    width: 20px; /* Align icons */
+    text-align: center;
+}
+
+/* Item Specifications */
+.item-specifications {
+    margin-top: 2rem; /* Space above specifications section */
+}
+
+.item-specifications h3 { /* "Item Specifications (Example)" heading */
+    margin-bottom: 1rem;
+    font-size: 1.75rem; /* Consistent with other h3 */
+}
+
+.item-specifications ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0; /* Remove default ul margin */
+}
+
+.item-specifications li {
+    padding: 0.75rem 0; /* Increased padding for better spacing */
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-specifications li:last-child {
+    border-bottom: none;
+}
+
+.item-specifications li strong {
+    color: var(--text-color);
+    margin-right: 0.5rem;
+}
+
+/* Buttons in seller info card already have w-100 and mb-2 (0.5rem) from Bootstrap */
+/* .seller-info-card .btn {
+    margin-bottom: 0.5rem; 
+} */
