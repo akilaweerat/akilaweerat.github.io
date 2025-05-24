@@ -1,17 +1,20 @@
 /* Global Styles */
 :root {
-    --primary-color: #007bff; /* Refined Blue */
-    --primary-color-rgb: 0,123,255;
-    --secondary-color: #6c757d; /* Grey */
-    --secondary-color-rgb: 108,117,125;
-    --success-color: #28a745; /* Green for success, CTAs */
-    --success-color-rgb: 40,167,69;
-    --accent-color: #ffc107; /* Yellow for highlights */
-    --accent-color-rgb: 255,193,7;
-    --background-light: #f8f9fa; /* Light grey for backgrounds */
-    --background-white: #ffffff; /* White background */
-    --text-color: #343a40; /* Dark Grey for text */
-    --text-light: #6c757d; /* Lighter grey for secondary text */
+    --primary-color: #2563eb; /* Modern blue */
+    --primary-color-rgb: 37, 99, 235;
+    --secondary-color: #64748b; /* Modern slate */
+    --secondary-color-rgb: 100, 116, 139;
+    --success-color: #059669; /* Modern green */
+    --success-color-rgb: 5, 150, 105;
+    --accent-color: #f59e0b; /* Modern amber */
+    --accent-color-rgb: 245, 158, 11;
+    --background-light: #f8fafc; /* Lighter background */
+    --background-white: #ffffff;
+    --text-color: #1e293b; /* Darker text for better contrast */
+    --text-light: #64748b;
+    --border-radius: 0.5rem;
+    --box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --transition: all 0.3s ease;
 
     /* Animation timings */
     --animation-duration-short: 0.3s;
@@ -92,203 +95,197 @@ h6 {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(rgba(0, 123, 255, 0.1), rgba(0, 123, 255, 0.05));
-    padding: 5rem 0;
-    margin-bottom: 3rem;
-    animation: kf-fade-slide-up var(--animation-duration-medium) ease-out backwards;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05));
+    padding: 6rem 0;
+    margin-bottom: 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="%232563eb" fill-opacity="0.05"/></svg>');
+    opacity: 0.5;
 }
 
 .hero-section h1 {
-    color: var(--primary-color);
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-section .lead {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
 }
 
 /* Category Cards */
-/* Adding a wrapper class for spacing, assuming it will be in HTML */
 .category-section {
-    padding-bottom: 3rem;
-    animation: kf-fade-in var(--animation-duration-medium) ease-out backwards;
-    animation-delay: 0.2s; /* Stagger entrance after hero */
+    padding: 4rem 0;
 }
 
 .category-card {
-    transition: transform var(--animation-duration-short) ease, box-shadow var(--animation-duration-short) ease;
-    margin-bottom: 1.5rem;
-    cursor: pointer;
-    animation: kf-fade-scale-in var(--animation-duration-medium) ease-out backwards;
-    /* Stagger card animations if they are in a list - requires JS or manual :nth-child for pure CSS */
-    /* For now, a common delay or no delay if they appear at different times due to scrolling */
-    border-radius: 0.25rem; /* Ensure cards have a base radius for consistency */
-    border: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: var(--background-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    height: 100%;
 }
 
 .category-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.category-card:focus-within {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2), 0 0 0 0.2rem rgba(var(--primary-color-rgb), 0.25);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 .category-card i {
-    color: var(--primary-color); /* Change category icons to primary color for better CTA */
-    font-size: 2rem; /* Slightly larger icons */
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
 }
 
-.category-card .card-body {
-    padding: 1.5rem; /* Consistent padding in cards */
+.category-card h5 {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
 }
 
 /* Form Styles */
 #adForm {
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    border: none;
-    padding: 2rem;
-    margin-bottom: 3rem;
-    border-radius: 0.5rem;
-    animation: kf-fade-in var(--animation-duration-medium) ease-out backwards;
-    animation-delay: 0.6s; /* Stagger after other sections */
+    background: var(--background-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .form-control {
-    padding: 0.75rem 1rem; /* Increased padding for form inputs */
-    margin-bottom: 1rem; /* Spacing below form inputs */
-    font-size: 1rem; /* Consistent font size with body */
-    background-clip: padding-box;
-    border: 1px solid #ced4da; /* Default Bootstrap border color */
-    transition: border-color var(--animation-duration-short) ease-in-out, box-shadow var(--animation-duration-short) ease-in-out;
-}
-
-.form-control:hover {
-    border-color: #adb5bd; /* Slightly darker border on hover - Bootstrap's $gray-500 */
+    padding: 0.875rem 1rem;
+    border-radius: 0.375rem;
+    border: 1px solid #e2e8f0;
+    transition: var(--transition);
+    font-size: 1rem;
 }
 
 .form-control:focus {
     border-color: var(--primary-color);
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.25); /* Using RGB variable */
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.1);
 }
-
-/* Styling for select elements */
-select.form-control {
-    appearance: none; /* Remove default system appearance */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 16px 12px;
-    padding-right: 2.25rem; /* Make space for the arrow */
-}
-
-/* Remove arrow for multiple select */
-select.form-control[multiple], select.form-control[size]:not([size="1"]) {
-    background-image: none;
-    padding-right: 0.75rem;
-}
-
-
-/* Ensure textarea also gets hover/focus */
-textarea.form-control:hover {
-    border-color: #adb5bd;
-}
-
-textarea.form-control:focus {
-    border-color: var(--primary-color);
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(var(--primary-color-rgb), 0.25);
-}
-
 
 .form-label {
-    font-weight: 600; /* Bolder labels */
+    font-weight: 600;
+    color: var(--text-color);
     margin-bottom: 0.5rem;
 }
 
 /* Featured Listings */
-/* Adding a wrapper class for spacing, assuming it will be in HTML */
 .featured-listings-section {
-    padding-bottom: 3rem;
-    animation: kf-fade-in var(--animation-duration-medium) ease-out backwards;
-    animation-delay: 0.4s; /* Stagger entrance */
+    padding: 4rem 0;
+    background: var(--background-light);
 }
 
 .listing-card {
-    border: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform var(--animation-duration-short) ease, box-shadow var(--animation-duration-short) ease;
-    margin-bottom: 1.5rem;
-    border-radius: 0.25rem;
-    animation: kf-fade-scale-in var(--animation-duration-medium) ease-out backwards;
-    /* Similar to category cards, true on-scroll needs JS. This will animate once. */
+    background: var(--background-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    height: 100%;
+    overflow: hidden;
 }
 
 .listing-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
-}
-
-.listing-card:focus-within {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2), 0 0 0 0.2rem rgba(var(--primary-color-rgb), 0.25);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 .listing-card img {
-    height: 200px;
+    height: 240px;
     object-fit: cover;
-    border-top-left-radius: 0.25rem; /* Match card rounding */
-    border-top-right-radius: 0.25rem;
+    transition: var(--transition);
+}
+
+.listing-card:hover img {
+    transform: scale(1.05);
 }
 
 .listing-card .card-body {
-    padding: 1.5rem; /* Consistent padding in cards */
+    padding: 1.5rem;
+}
+
+.listing-card .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+}
+
+.listing-card .card-text {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
 .listing-price {
+    font-size: 1.25rem;
+    font-weight: 700;
     color: var(--success-color);
-    font-weight: bold;
-    font-size: 1.25rem; /* Larger price */
+    margin-bottom: 1rem;
 }
 
 /* Footer */
 footer {
-    margin-top: 3rem;
-    padding: 2rem 0; /* Added padding to footer */
-    background-color: var(--background-light); /* Light background for footer */
-    border-top: 1px solid #e9ecef; /* Subtle top border for footer */
-}
-
-footer p {
-    color: var(--text-light);
+    background: var(--text-color);
+    color: white;
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
 }
 
 footer a {
-    color: var(--primary-color);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    transition: color var(--animation-duration-short) ease, text-decoration-color var(--animation-duration-short) ease-in-out;
+    transition: var(--transition);
 }
 
-footer a:hover, footer a:focus {
-    color: var(--accent-color); /* Hover to accent color */
-    text-decoration: underline; /* Ensure underline on hover/focus */
-    outline: none; /* Consistent with other focused links */
+footer a:hover {
+    color: white;
+}
+
+/* Alert Banner */
+.alert {
+    border: none;
+    border-radius: 0;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-section {
-        text-align: center;
-        padding: 2rem 0;
+        padding: 4rem 0;
     }
-    
-    .hero-section img {
-        margin-top: 2rem;
+
+    .hero-section h1 {
+        font-size: 2.5rem;
     }
-    
-    .category-card {
-        margin-bottom: 1rem;
+
+    .category-card, .listing-card {
+        margin-bottom: 1.5rem;
+    }
+
+    #adForm {
+        padding: 1.5rem;
     }
 }
 
@@ -296,15 +293,16 @@ footer a:hover, footer a:focus {
 /* General button base style */
 .btn {
     display: inline-block; /* Ensures proper alignment and spacing */
-    padding: 0.5rem 1.5rem;
-    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
     text-align: center;
     vertical-align: middle;
     user-select: none;
     border: 1px solid transparent;
-    transition: all var(--animation-duration-short) ease-in-out;
+    transition: var(--transition);
     cursor: pointer;
     text-decoration: none; /* Remove underline from button-styled links */
+    border-radius: 0.375rem;
 }
 
 .btn:focus, .btn.focus {
@@ -316,17 +314,14 @@ footer a:hover, footer a:focus {
 /* Removing the redundant .btn-primary placeholder */
 
 .btn-primary {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+    border: none;
     color: var(--background-white);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    background-color: #0056b3; /* Darker primary */
-    border-color: #0052a9;
-    color: var(--background-white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(var(--primary-color-rgb), 0.2);
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -402,14 +397,13 @@ footer a:hover, footer a:focus {
 /* Button Outline Styles */
 .btn-outline-primary {
     color: var(--primary-color);
-    border-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
 }
 
 .btn-outline-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background-color: var(--primary-color);
-    color: var(--background-white);
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-1px);
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
@@ -490,32 +484,24 @@ a:hover, a:focus {
 /* Assuming .navbar is styled by Bootstrap or another framework.
    If custom styling is needed: */
 .navbar {
-    background-color: var(--background-white); /* White navbar background */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow */
+    padding: 1rem 0;
+    background: linear-gradient(135deg, var(--primary-color), #1d4ed8) !important;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 }
 
-.navbar .nav-link {
-    color: var(--text-light);
-    text-decoration: none; /* Ensure navbar links don't get underlined by general 'a' styles */
-    transition: color var(--animation-duration-short) ease-in-out;
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
 }
 
-.navbar .nav-link:hover,
-.navbar .nav-link:focus,
-.navbar .nav-link.active {
-    color: var(--primary-color);
-    text-decoration: none; /* Explicitly keep no underline */
-    outline: none; /* Remove default outline */
+.nav-link {
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    transition: var(--transition);
 }
 
-.navbar .form-control {
-    border-radius: 20px;
-    padding-left: 1rem;
-}
-
-.navbar .btn-light {
-    border-radius: 20px;
-    padding: 0.375rem 1.5rem;
+.nav-link:hover {
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Image Upload Preview */
